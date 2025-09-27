@@ -1,0 +1,24 @@
+.character-details {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.details-card {
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.details-card img {
+  width: 220px;
+  border-radius: 10px;
+}
+.episode-list {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+}

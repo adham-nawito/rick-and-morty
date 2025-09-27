@@ -1,0 +1,25 @@
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.load-more {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.load-more:hover {
+  background: #005fa3;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

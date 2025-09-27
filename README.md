@@ -1,1 +1,1 @@
-# rick-and-morty
+run the app using npm run dev
