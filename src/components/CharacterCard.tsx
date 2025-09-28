@@ -16,6 +16,7 @@ const CharacterCard = ({ character }: Props) =>
         src={character.image}
         alt={character.name}
         className="character-image"
+        loading='lazy'
       />
       <div className="character-info">
         <h3>{character.name}</h3>

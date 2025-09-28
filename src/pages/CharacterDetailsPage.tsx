@@ -6,17 +6,21 @@ import type { Episode, Character } from "../types";
 import { useCharacters } from '../hooks/useCharacters';
 
 import "../styles/CharacterDetailsPage.css";
+import Skeleton from '../components/Skeleton';
 
-const CharacterDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+const CharacterDetailsPage = () =>
+{
+  const { id } = useParams<{ id: string; }>();
 
   const { data: characters, isLoading, error } = useCharacters({});
   const character = characters?.results?.find(c => c.id === Number(id));
 
   const [episodes, setEpisodes] = useState<Episode[]>([]);
 
-  useEffect(() => {
-    const fetchCharacterEpisodes = async () => {
+  useEffect(() =>
+  {
+    const fetchCharacterEpisodes = async () =>
+    {
       if (!character) return;
       const firstFive = character.episode.slice(0, 5);
       const ids = firstFive.map((url: string) => Number(url.split("/").pop()));
@@ -35,7 +39,9 @@ const CharacterDetailsPage = () => {
     fetchCharacterEpisodes();
   }, [character]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return Array.from({ length: 4 }).map((_, index) => (
+    <Skeleton key={index} width="300px" height="10px" />
+  ));
   if (error) return <p className="error">{error}</p>;
   if (!character) return null;
 

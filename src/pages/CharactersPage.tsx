@@ -11,7 +11,7 @@ import "../styles/CharactersPage.css";
 const CharactersPage = () =>
 {
   const [page, setPage] = useState(1);
-  const [characters, setCharacters] = useState<Character[]>([]); // ✅ accumulate here
+  const [characters, setCharacters] = useState<Character[]>([]);
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
   const [species, setSpecies] = useState("");

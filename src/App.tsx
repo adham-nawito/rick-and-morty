@@ -1,16 +1,24 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 
-import CharactersPage from './pages/CharactersPage';
-import CharacterDetailsPage from './pages/CharacterDetailsPage';
 import ErrorBoundary from './utils/ErrorBoundary';
 
-function App() {
+
+const CharactersPage = lazy(() => import('./pages/CharactersPage'));
+const CharacterDetailsPage = lazy(() => import('./pages/CharacterDetailsPage'));
+
+function App()
+{
   return (
     <ErrorBoundary>
-      <Routes>
-        <Route path="/" element={<CharactersPage />} />
-        <Route path="/character/:id" element={<CharacterDetailsPage />} />
-      </Routes>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<CharactersPage />} />
+            <Route path="/character/:id" element={<CharacterDetailsPage />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }
