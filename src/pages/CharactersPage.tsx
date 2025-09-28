@@ -40,10 +40,9 @@ const CharactersPage = () =>
     {
       setCharacters((prev) =>
       {
-        const newOnes = data.results.filter(
-          (c) => !prev.some((p) => p.id === c.id)
-        );
-        return [...prev, ...newOnes];
+      const existingIds = new Set(prev.map((c) => c.id));
+      const newOnes = data.results.filter((c) => !existingIds.has(c.id));
+      return [...prev, ...newOnes];
       });
     }
   }, [data]);
@@ -94,7 +93,7 @@ const CharactersPage = () =>
         </p>
       </div>
 
-      {isLoading && page === 1 && (
+      {isLoading && sortedResults.length === 0 && (
         <div className="character-grid">
           {Array.from({ length: 10 }).map((_, idx) => (
             <Skeleton key={idx} width="200px" height="300px" />
